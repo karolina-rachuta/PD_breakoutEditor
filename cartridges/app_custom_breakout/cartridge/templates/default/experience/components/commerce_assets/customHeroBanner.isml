@@ -1,0 +1,8 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addJs('/js/hotspotScript.js');
+</isscript>
+
+<div>
+    <img class="imageKR" src="${pdict.imgUrl}" alt="${pdict.imgAlt}"/>
+</div>
