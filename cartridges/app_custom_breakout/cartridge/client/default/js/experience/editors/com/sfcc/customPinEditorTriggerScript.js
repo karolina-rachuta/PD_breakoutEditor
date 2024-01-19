@@ -19,12 +19,21 @@
 
             openBreakoutEditorButton.addEventListener('click', handleBreakoutOpen);
             imageContainer.className = 'image_container';
-            currentValue = value ? value : {};
             triggerEditorContainer.appendChild(imageContainer);
+
+            currentValue = value ? value : {};
+            showCreatedHotspots(currentValue);
+        });
+
+        subscribe('sfcc:value', async ({ breakout, ...rest }) => {
+            const applyButtonEl = document.querySelector('.slds-button_brand');
+            const { id } = breakout;
+            applyButtonEl.addEventListener('click', () => handleBreakoutApply(id));
+            console.log('subsribe, sfcc:value', subscribe);
         });
 
     function updatePageDesignerValue(value) {
-            console.log('update-trigger', value);
+            console.log('updatePageDesignerValue-trigger', value);
             emit({
                 type: 'sfcc:value',
                 payload: value
@@ -32,17 +41,14 @@
         }
     function handleBreakoutOpen(value) {
         var imgWrapper = document.querySelector('.image_container span');
-        console.log('imgWrapper', imgWrapper);
+        console.log('handleBreakoutOpen-imgWrapper', imgWrapper);
         var imageSrc = imgWrapper.getAttribute('src');
-        console.log('imKR', imgWrapper);
-        
-
+        console.log('handleBreakoutOpen-value', value);
         console.log('hanleBreakoutOpen-trigger-imageSrc', imageSrc);
 
         currentValue = {
             src: imageSrc
         }
-        
         console.log('hanleBreakoutOpen-trigger-currentValue', currentValue);
 
         updatePageDesignerValue(currentValue);
@@ -72,10 +78,23 @@
 
     function handleBreakoutApply(value) {
         // Emit value update to Page Designer host application
-        emit({
-            type: 'sfcc:value',
-            payload: value
-        });
+        currentValue = Object.assign({}, value);
+        updatePageDesignerValue(currentValue);
+        showCreatedHotspots(currentValue);
+        // why we dont need this?
+        // emit({
+        //     type: 'sfcc:value',
+        //     payload: currentValue
+        // });
+    }
+// number of created pins in Trigger Editor
+    function showCreatedHotspots(currentValue) {
+        if (currentValue.pins) {
+            var numberOfHotSpots = currentValue.pins.length;
+            var pinContainerTrigger = document.createElement('div');
+            document.body.append(pinContainerTrigger);
+            pinContainerTrigger.innerText = `Number of pins: ${numberOfHotSpots}`;
+        }
     }
 
 })();
