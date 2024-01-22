@@ -4,7 +4,7 @@
 </isscript>
 
 <div class= "position-relative">
-    <img class="imageKR" src="${pdict.imgUrl}" alt="${pdict.imgAlt}"/>
+    <img class="image_PD" src="${pdict.imgUrl}" alt="${pdict.imgAlt}"/>
     
     <isif condition="${pdict.hotpins !== null && pdict.hotpins !== undefined}">
     <isset name="pins" value="${pdict.hotpins}" scope="page" />

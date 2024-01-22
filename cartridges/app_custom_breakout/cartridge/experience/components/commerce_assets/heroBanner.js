@@ -1,3 +1,4 @@
+// PD bonus task
 'use strict';
 
 var Template = require('dw/util/Template');
@@ -5,7 +6,7 @@ var HashMap = require('dw/util/HashMap');
 
 
 /**
- * Render logic for storefront.productBannerStrip component.
+ * Render logic for storefront.heroBanner component.
  * @param {dw.experience.ComponentScriptContext} context The Component script context object.
  * @returns {string} The template to be displayed
  */

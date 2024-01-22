@@ -1,4 +1,4 @@
-// Code in the client-side JavaScript file for the breakout editor
+// Code in the client-side JavaScript file for the breakout  (BeeIt-DEMO)
 (function () {
     subscribe('sfcc:ready', function () {
             // Once the breakout editor is ready, the custom code is able to select or
