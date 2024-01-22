@@ -29,7 +29,7 @@
     document.body.appendChild(flexWrapper);
 
     function placeHotspot(imgHeight, imgWidth, clientX, clientY, parsed, imgWrapper, selectedHotspotsList, currentImage, productId, updateHotspots) {
-       
+       console.log("placeHotspot-breakout", placeHotspot);
         if (productId) {
             var coordX = parsed ? clientX : parseFloat(100 * ((clientX / (imgWidth)))).toFixed(2) + '%';
             var coordY = parsed ? clientY : parseFloat(100 * ((clientY / (imgHeight)))).toFixed(2) + '%';
@@ -110,6 +110,7 @@
     }
 
     function toggleVisibility(type, addedClass, removedClass) {
+        console.log("toggleVisibility-breakout", toggleVisibility);
         var elemntsToHide = document.querySelectorAll(`.${type}`);
         elemntsToHide.forEach(element => {
             element.classList.add(addedClass);
@@ -118,6 +119,7 @@
     }
 
     function handleImageSelection(currentButton, showHideImagesButtons) {
+        console.log("handleImageSelection-breakout", handleImageSelection);
         var imageToShow = document.getElementById(currentButton.type);
         var displayedClass = "displayed";
         var hiddenClass = "hidden";
@@ -141,6 +143,7 @@
     };
 
     function submitHotpsotSelections() {
+        console.log("submitHotpsotSelections-breakout", submitHotpsotSelections);
         emit({
             type: 'sfcc:value',
             payload: currentValue
@@ -148,7 +151,7 @@
     }
 
     function createHotspotInfoContainerDOMElements(currentImage) {
-        console.log('createHotspotInfoContainerDOMElements', createHotspotInfoContainerDOMElements);
+        console.log("createHotspotInfoContainerDOMElements-breakout", createHotspotInfoContainerDOMElements);
         console.log('createHotspotInfoContainerDOMElements:currentImage', currentImage);
         var imgElement = document.createElement('img');
         var selectedHotspotsList = document.createElement('ul');
@@ -191,13 +194,15 @@
         })
 
         function setHotSpot(productPicker) {
+            console.log("setHotSpot-breakout", setHotSpot);
+            console.log("productPicker-breakout", productPicker);
             var clickEvent = this;
             var bounds = clickEvent.target.getBoundingClientRect();
             var x = clickEvent.clientX - bounds.left;
             var y = clickEvent.clientY - bounds.top;
-            placeHotspot(imgHeight, imgWidth, x, y, false, imgWrapper, selectedHotspotsList, currentImage, productPicker?.value?.value, true)
+            placeHotspot(imgHeight, imgWidth, x, y, false, imgWrapper, selectedHotspotsList, currentImage, 10, true)
         }
-
+// productPicker?.value?.value
         imgElement.addEventListener('click', function (e) {
             emit({
                 type: 'sfcc:breakout',
@@ -211,6 +216,7 @@
     }
 
     function createNavigationDOMElements() {
+        console.log("createNavigationDOMElements-breakout", createNavigationDOMElements);
         var loadMobileImage = document.createElement('button');
         var loadDesktopImage = document.createElement('button');
         var loadTabletImage = document.createElement('button');
@@ -245,8 +251,10 @@
     }
 
     subscribe('sfcc:ready', async (value) => {
+        console.log("subscribe-breakout", subscribe);
+        console.log("value-breakout", value);
         currentValue = Object.assign({}, value.value);
-
+        console.log("currentValue-breakout", currentValue);
         createNavigationDOMElements();
 
         var imageTypes = [];

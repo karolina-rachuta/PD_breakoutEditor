@@ -1,0 +1,17 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addJs('/js/hotspotScript.js');
+</isscript>
+
+<div class= "position-relative">
+    <img class="imageKR" src="${pdict.imgUrl}" alt="${pdict.imgAlt}"/>
+    
+    <isif condition="${pdict.hotpins !== null && pdict.hotpins !== undefined}">
+    <isset name="pins" value="${pdict.hotpins}" scope="page" />
+        <isloop items="${pins}" var="pin" status="loopstatus">
+            <div class = "pin position-absolute" style="background-color: red; width: 5px; height: 5px; left:${pin.xCoordinate + 'px'}; top: ${pin.yCoordinate + 'px'}"></div>
+        </isloop>
+    </isif> 
+    
+
+</div>

@@ -13,6 +13,7 @@ var productHelpers = require('*/cartridge/scripts/helpers/productHelpers');
  * @returns {string} template to be displayed
  */
 module.exports.render = function (context) {
+    // console.log("modul-render-context", context);
     var model = new HashMap();
     var content = context.content; //getting editor data, currentValue 
 

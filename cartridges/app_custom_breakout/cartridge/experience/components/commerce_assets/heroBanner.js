@@ -15,9 +15,9 @@ module.exports.render = function (context) {
     var model = new HashMap();
     model.imgUrl = content.image ? content.image.absURL : null;
     model.imgAlt = content.alt;
-    model.hotpins = content.customPinEditor.pins;
+    if (content.customPinEditor !== undefined && content.customPinEditor !== null) {
+        model.hotpins = content.customPinEditor.pins;
+    }
 
-
-
-    return new Template('experience/components/commerce_assets/customHeroBanner').render(model).text;
+    return new Template('/experience/components/commerce_assets/heroBanner').render(model).text;
 };

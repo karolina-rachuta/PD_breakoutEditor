@@ -6,6 +6,8 @@
     let currentValue = {};
 
     function renderHotspots(hotspots) {
+        console.log("renderHotspots-trigger", renderHotspots);
+        console.log("renderHotspots-trigger-hotspots", hotspots);
         var hotspotHtml = '';
         hotspots.forEach((hotspot, index) => {
             hotspotHtml += `<span class="hotspot-breakout-marker" data-index="${index + 1} - " style="display: block; margin-top: 5px; margin-left: 15px">${hotspot[2]}</span>`;
@@ -15,6 +17,8 @@
     }
 
     function showCreatedHotspots(currentValue) {
+        console.log("showCreatedHotspots-trigger", showCreatedHotspots); 
+        console.log("showCreatedHotspots-trigger-currentValue", currentValue); 
         if (currentValue.images) {
             // remove exisiting markers
             let hotspotsContainer = document.querySelector('.hotspots-container');
@@ -43,7 +47,8 @@
     }
 
     subscribe('sfcc:ready', async ({ value, ...rest }) => {
-        console.log('value-ready-trigger', value);
+        console.log("subscribe-trigger", subscribe); 
+        console.log('value-subscribe-trigger', value);
         let button = document.createElement('button');
         button.setAttribute('class', 'slds-button slds-button_outline-brand btn btn-secondary mb-3');
         button.innerHTML = 'Create Hotspots';
@@ -66,12 +71,17 @@
     });
 
     subscribe('sfcc:value', async ({ breakout, ...rest }) => {
+        console.log("subscribe-second-trigger", subscribe); 
+        console.log("subscribe-second-trigger-breakoutValue", breakout); 
+        console.log("subscribe-second-trigger-rest", ...rest); 
         const applyButtonEl = document.querySelector('.slds-button_brand');
         const { id } = breakout;
         applyButtonEl.addEventListener('click', () => handleBreakoutApply(id));
     });
 
     function updatePageDesignerValue(value) {
+        console.log("updatePageDesignerValue-trigger", updatePageDesignerValue);
+        console.log("updatePageDesignerValue-trigger-value", value);
         emit({
             type: 'sfcc:value',
             payload: value
@@ -79,6 +89,8 @@
     }
 
     function handleBreakoutOpen(value) {
+        console.log("handleBreakoutOpen-trigger", handleBreakoutOpen);
+        console.log("handleBreakoutOpen-trigger-value", value);
         var imgWrapper = document.querySelector('.hotspots-display');
 
         for (let index = 0; index < imgWrapper.children.length; index++) {
@@ -131,6 +143,7 @@
         }
 
         updatePageDesignerValue(currentValue);
+        
 
         emit({
             type: 'sfcc:breakout',
@@ -140,9 +153,14 @@
                 value: currentValue
             }
         }, handleBreakoutClose);
+        console.log("emit-trigger", emit);
+        console.log("emit-trigger-currentValue", currentValue)
     }
 
     function handleBreakoutClose({ type, value }) {
+        console.log("handleBreakoutClose-trigger", handleBreakoutClose);
+        console.log("handleBreakoutClose-trigger-type", type);
+        console.log("handleBreakoutClose-trigger-value", value);
         // Now the "value" can be passed back to Page Designer
         if (type === 'sfcc:breakoutApply') {
             handleBreakoutApply(value);
@@ -155,6 +173,8 @@
     }
 
     function handleBreakoutApply(value) {
+        console.log("handleBreakoutApply-trigger", handleBreakoutApply);
+        console.log("handleBreakoutApply-trigger-value", value);
         currentValue = Object.assign({}, value);
         updatePageDesignerValue(currentValue);
         showCreatedHotspots(currentValue);

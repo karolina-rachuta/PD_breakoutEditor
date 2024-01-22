@@ -9,14 +9,13 @@
     var currentValue = {};
     var newPinSettings;
 
-    //update/ delete => currentValue;
+    
     subscribe('sfcc:ready', async (value) => {
         currentValue = Object.assign({}, value.value);
         
-        console.log('currentValue', currentValue);
-        console.log('breakout-readyf', 'sfcc:ready');
-        console.log('value-breakout-subscribe:', value);
-        console.log('value-breakout-subscribe.value:', value.value);
+        console.log('currentValue-subscribe-breakout', currentValue);
+        console.log('value-breakout-subscribe:', subscribe);
+        console.log('value-breakout-subscribe-value.value:', value.value);
 
         if (value) {
         imageFromTrigger = document.createElement('img');
@@ -49,7 +48,7 @@
 
 
         function handlePinPlacement(event) {
-        console.log('handlePin', handlePinPlacement)
+        console.log('handlePin-breakout', handlePinPlacement);
 
         if (imageFromTrigger) {
             var xCoordinate = event.clientX - imageFromTrigger.getBoundingClientRect().left;
@@ -76,14 +75,17 @@
                 id: pin.dataset.id
             }
 
-            console.log(pin.style.left);
-            console.log(pin.style.top);
+            console.log("newPinSettings-breakout", newPinSettings);
 
             //updating currentValue
             if (!currentValue.pins) {
             currentValue.pins = [];
-            };
-            currentValue.pins.push(newPinSettings);
+            } else {
+                currentValue.pins.push(newPinSettings);
+                console.log("currentValue-breakout", currentValue);
+            }
+        
+
 
         // creating li with pin coordinates
         pinPoint = document.createElement('li');
@@ -101,7 +103,7 @@
 
          pinList.append(pinPoint);
          id++;
-         console.log("incremented", id);
+
          deletePinButton.addEventListener('click', (event) => handlePinRemoval(event));
          submitHotpsotSelections()
          console.log('currentValue-add pin', currentValue);
@@ -111,6 +113,8 @@
     }
 
     function handlePinRemoval(event) {
+        console.log("handlePinRemoval",handlePinRemoval);
+        console.log("handlePinRemoval-event", event);
         var allElementsToRemove = document.querySelectorAll('.pin-remove');
         var deleteButtonId = event.target.dataset.id;
         allElementsToRemove.forEach((element)=> {
@@ -119,18 +123,18 @@
             }
         currentValue.pins = currentValue.pins.filter((newPinSettings) => newPinSettings.id !== deleteButtonId);
         submitHotpsotSelections();
-        console.log('handlePinRemoval-currentValue2', currentValue);
+        console.log('handlePinRemoval-currentValue', currentValue);
         })
         
     };
 
     function submitHotpsotSelections() {
-        console.log('submitHotpsotSelections', submitHotpsotSelections);
+        console.log('submitHotpsotSelections-breakout', submitHotpsotSelections);
         emit({
             type: 'sfcc:value',
             payload: currentValue
         });
-        console.log('emit-currentValue', currentValue);
+        console.log('emit-currentValue-breakout', currentValue);
     }
 
 })();

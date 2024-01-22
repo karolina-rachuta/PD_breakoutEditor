@@ -13,6 +13,7 @@ function setAttributes(el, attrs) {
  * @return {void}
  */
 function setHotspotsImageSrc() {
+    console.log("setHotspotsImageSrc-helper", setHotspotsImageSrc )
         var images = document.querySelectorAll('.hotspot-src-element');
         if(images){
             try {
@@ -26,6 +27,7 @@ function setHotspotsImageSrc() {
                     setAttributes(image, {"src": currentImage.getAttribute('src'), "type": currentImage.getAttribute('type'), name: currentImage.getAttribute('name'), "hotspots": currentImage.getAttribute('hotspots')});
                     imgWrapper.append(image);
                     console.log("image-helper", image)
+                    console.log("setHotspotsImageSrc-helper-image", image);
                 }
             } catch (error) {
                 // do not log anything
