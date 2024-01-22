@@ -1,3 +1,4 @@
+// (BeeIt-DEMO)
 'use strict';
 
 var Template = require('dw/util/Template');

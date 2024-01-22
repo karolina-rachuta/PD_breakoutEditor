@@ -1,4 +1,4 @@
-// Code in the client-side JavaScript file for the trigger editor
+// Code in the client-side JavaScript file for the trigger editor (BeeIt-DEMO)
 (function () {
     subscribe('sfcc:ready', function () {
 
