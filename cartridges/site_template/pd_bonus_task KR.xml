@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://www.demandware.com/xml/impex/library/2006-10-31" library-id="RefArchSharedLibrary">
+
+ <content content-id="0c200f0443b340801989e99b39">
+        <type>component.commerce_assets.heroBanner</type>
+        <config>{
+  "visibility" : [ ]
+}</config>
+        <data xml:lang="x-default">{
+  "image" : "placeholder 410x179.4.png",
+  "alt" : "jhgfds",
+  "customPinEditor" : {
+    "src" : "https://zydc-008.dx.commercecloud.salesforce.com/on/demandware.static/-/Library-Sites-RefArchSharedLibrary/default/dw929d1999/placeholder%20410x179.4.png",
+    "pins" : [ {
+      "xCoordinate" : 140,
+      "yCoordinate" : 86,
+      "id" : "1"
+    }, {
+      "xCoordinate" : 304,
+      "yCoordinate" : 56,
+      "id" : "3"
+    }, {
+      "xCoordinate" : 303,
+      "yCoordinate" : 133,
+      "id" : "0"
+    }, {
+      "xCoordinate" : 359,
+      "yCoordinate" : 56,
+      "id" : "1"
+    }, {
+      "xCoordinate" : 84,
+      "yCoordinate" : 44,
+      "id" : "2"
+    } ]
+  }
+}</data>
+        <online-flag>true</online-flag>
+        <online-flag site-id="RefArch">true</online-flag>
+        <page-attributes/>
+    </content>
+ <content content-id="customherobanner">
+        <display-name xml:lang="x-default">customHeroBanner</display-name>
+        <type>page.storePage</type>
+        <config>{
+  "visibility" : [ ]
+}</config>
+        <visibility-mode xml:lang="x-default">visible</visibility-mode>
+        <data xml:lang="x-default">{ }</data>
+        <online-flag>false</online-flag>
+        <online-flag site-id="RefArch">false</online-flag>
+        <searchable-flag>false</searchable-flag>
+        <searchable-flag site-id="RefArch">false</searchable-flag>
+        <page-attributes/>
+        <content-links>
+            <content-link content-id="0c200f0443b340801989e99b39" type="page.storePage.main">
+                <position>0.0</position>
+            </content-link>
+        </content-links>
+        <sitemap-included-flag site-id="RefArch">false</sitemap-included-flag>
+    </content>
+</library>
