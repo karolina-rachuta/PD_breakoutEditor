@@ -1,4 +1,3 @@
-// Code in the client-side JavaScript file for the breakout  (PD-bonus task)
 (() => {
     let imageFromTrigger;
     let breakoutContainer;
@@ -12,9 +11,6 @@
 
     
     subscribe('sfcc:ready', async (value) => {
-        // Once the breakout editor is ready, the custom code is able to select or
-            // Create a value. Any meaningful change to a value/selection needs to be
-            // reflected back into the host container via a `sfcc:value` event.
         currentValue = Object.assign({}, value.value);
         if (value) {
         imageFromTrigger = document.createElement('img');

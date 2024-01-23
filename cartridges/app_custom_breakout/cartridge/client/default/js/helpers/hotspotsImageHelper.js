@@ -1,4 +1,3 @@
-// PD bonus task
 'use strict';
 /**
  * 
