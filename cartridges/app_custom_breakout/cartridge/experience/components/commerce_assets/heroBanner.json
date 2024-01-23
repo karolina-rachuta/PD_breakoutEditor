@@ -23,6 +23,14 @@
                     "required": false
                 },
                 {
+                    "id": "lazyLoading",
+                    "name": "Lazy loading",
+                    "description": "If true - lazy loading will be applied, true by default.",
+                    "type": "Boolean",
+                    "required": false,
+                    "default_value": true
+                },
+                {
                     "id": "customPinEditor",
                       "name": "Custom Pin Editor",
                       "type": "custom",

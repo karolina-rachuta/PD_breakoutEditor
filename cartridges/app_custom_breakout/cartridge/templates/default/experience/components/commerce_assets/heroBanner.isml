@@ -5,7 +5,11 @@
 </isscript>
 
 <div class= "position-relative">
-    <img class="image_PD" src="${pdict.imgUrl}" alt="${pdict.imgAlt}"/>
+    <isif condition="${pdict.lazyLoading}">
+        <img loading="lazy" class="image_PD" src="${pdict.imgUrl}" alt="${pdict.imgAlt}"/>
+    <iselse/>
+        <img class="image_PD" src="${pdict.imgUrl}" alt="${pdict.imgAlt}"/>
+    </isif>
     
     <isif condition="${pdict.hotpins !== null && pdict.hotpins !== undefined}">
     <isset name="pins" value="${pdict.hotpins}" scope="page" />

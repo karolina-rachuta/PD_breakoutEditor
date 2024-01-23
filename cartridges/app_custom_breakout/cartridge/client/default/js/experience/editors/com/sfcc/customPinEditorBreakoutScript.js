@@ -13,27 +13,27 @@
     subscribe('sfcc:ready', async (value) => {
         currentValue = Object.assign({}, value.value);
         if (value) {
-        imageFromTrigger = document.createElement('img');
-        imageFromTrigger.setAttribute('src', currentValue.src);
+            imageFromTrigger = document.createElement('img');
+            imageFromTrigger.setAttribute('src', currentValue.src);
 
-        breakoutContainer = document.createElement('div');
-        breakoutContainer.className = "breakoutContainer";
-        breakoutContainer.style.position = 'relative';
+            breakoutContainer = document.createElement('div');
+            breakoutContainer.className = "breakoutContainer";
+            breakoutContainer.style.position = 'relative';
 
-        document.body.append(breakoutContainer);
-        breakoutContainer.append(imageFromTrigger);
+            document.body.append(breakoutContainer);
+            breakoutContainer.append(imageFromTrigger);
         
-        imageFromTrigger.addEventListener('click', handlePinPlacement);
+            imageFromTrigger.addEventListener('click', handlePinPlacement);
 
-        listTitile = document.createElement('h2');
-        listTitile.innerText = "List with pins and coordinates:"
-        pinList = document.createElement('ul');
+            listTitile = document.createElement('h2');
+            listTitile.innerText = "List with pins and coordinates:"
+            pinList = document.createElement('ul');
         
-        breakoutContainer.append(listTitile);
-        breakoutContainer.append(pinList);
+            breakoutContainer.append(listTitile);
+            breakoutContainer.append(pinList);
     
         } else {
-         console.error('Image element with class "image_PD" not found.');
+            console.error('Image element with class "image_PD" not found.');
         }
     });
 
@@ -63,7 +63,7 @@
 
             //updating currentValue
             if (!currentValue.pins) {
-            currentValue.pins = [];
+                currentValue.pins = [];
             } else {
                 currentValue.pins.push(newPinSettings);
             }

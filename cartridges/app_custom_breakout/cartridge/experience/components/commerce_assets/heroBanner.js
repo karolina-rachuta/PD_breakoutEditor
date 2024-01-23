@@ -1,4 +1,3 @@
-// PD bonus task
 'use strict';
 
 var Template = require('dw/util/Template');
@@ -16,6 +15,7 @@ module.exports.render = function (context) {
     var model = new HashMap();
     model.imgUrl = content.image ? content.image.absURL : null;
     model.imgAlt = content.alt;
+    model.lazyLoading = content.lazyLoading;
     if (content.customPinEditor !== undefined && content.customPinEditor !== null) {
         model.hotpins = content.customPinEditor.pins;
     }
