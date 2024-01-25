@@ -4,5 +4,7 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"extension.prophet.sitecontext.selectedSiteID": ""
+	}
 }

@@ -1,0 +1,51 @@
+{
+    "name": "Hero Banner",
+    "description": "This is a banner component.",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "bannerSpec",
+            "name": "BannerSpecification",
+            "description": "Specification of the banner to be displayed in editor.",
+            "attribute_definitions": [
+                {
+                    "id": "image",
+                    "name": "Banner Image",
+                    "description": "The image shown by the banner.",
+                    "type": "file",
+                    "required": true
+                },
+                {
+                    "id": "alt",
+                    "name": "Banner Image Alt Text",
+                    "description": "The image alt text shown by the banner.",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "id": "lazyLoading",
+                    "name": "Lazy loading",
+                    "description": "If true - lazy loading will be applied, true by default.",
+                    "type": "Boolean",
+                    "required": false,
+                    "default_value": true
+                },
+                {
+                    "id": "customPinEditor",
+                      "name": "Custom Pin Editor",
+                      "type": "custom",
+                      "required": false,
+                      "editor_definition": {
+                          "type": "com.sfcc.customPinEditorTrigger",
+                          "configuration": {
+                              "options": {
+                                  "config": []
+                              }
+                          }
+                      }
+                  }
+            ]
+        }
+    ],
+    "region_definitions": []
+}
